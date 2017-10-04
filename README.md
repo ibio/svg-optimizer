@@ -28,7 +28,7 @@ or
 $ npm run svg-optimizer file=./example.svg
 ```
 
-`root` means the root folder you want to pass. It will automatically traverse all its sub-folders and find out all `svg` files, making them have DIFFERENT IDs with each other (as long as they have different filenames). It also support pause / resume (just simply press `ctrl + C`)! In case you want to stop for some reason during the optimization.
+`root` means the root folder you want to pass. It will automatically traverse all its sub-folders and find out all `svg` files, making them have DIFFERENT IDs with each other (as long as they have different filenames). It also support pause / resume (just simply press `ctrl + C` and run the same script again)! In case you want to stop for some reason during the optimization.
 
 `file` means the specific svg file you want to pass. It will only shuffle IDs within this file.
 
