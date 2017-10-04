@@ -39,4 +39,8 @@ obj.getParams = (array) => {
 	return result;
 }
 
+obj.isSVG = (path) => {
+	return _.endsWith(path, '.svg');
+}
+
 module.exports = obj;

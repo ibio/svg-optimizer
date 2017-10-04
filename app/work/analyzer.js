@@ -1,6 +1,7 @@
 'use strict';
 
 const File = require('../helper/file');
+const Util = require('../helper/util');
 
 // TODO: for massive folders analytics
 const CACHE_DIRS = 'dirs';
@@ -61,6 +62,7 @@ Analyzer.prototype.clear = function() {
 Analyzer.prototype._addToCache = function(callback) {
   const path = this._dirList.shift();
   // sync way for now
+  // for current folder
   const list = File.getAllFiles(path) || [];
   list.forEach(item => {
     const str = path + '/' + item;
@@ -68,12 +70,16 @@ Analyzer.prototype._addToCache = function(callback) {
     if(File.isDir(str)){
       this._dirList.push(str);
     }else{
-      this._fileList.push(str);
+      // svg only
+      if(Util.isSVG(item)){
+        this._fileList.push(str);
+      }
     }
   });
   //
   if(this._dirList.length > 0){
-    this._addToCache(callback);
+    // to avoid RangeError: Maximum call stack size exceeded
+    process.nextTick(() => {this._addToCache(callback);});
   }else{
     callback && callback();
   }

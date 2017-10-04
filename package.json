@@ -12,7 +12,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test-run": "svg-optimizer",
+    "test-svg": "svg-optimizer",
+    "test-svg-root": "svg-optimizer root=./etc",
+    "test-svg-file": "svg-optimizer file=./etc/test-folder/abc.svg",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
