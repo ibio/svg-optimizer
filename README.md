@@ -50,6 +50,6 @@ $ npm run svg-file
 
 ### Pre-commit Check Usage
 
-You can even add it with git hoot, so that every time when you check-in your code, it will automatically optimize all newly added / modified svg files for you.
+You can even add it with git hook, so that every time when you check-in your code, it will automatically optimize all newly added / modified svg files for you.
 
-Simply have look https://github.com/ibio/svg-optimizer/blob/master/example/pre-commit-package.json and rename it as `package.json`, change the places whenever necessary.
+Simply have a look https://github.com/ibio/svg-optimizer/blob/master/example/pre-commit-package.json and rename it as `package.json`, change the places whenever necessary.
