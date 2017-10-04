@@ -1,0 +1,26 @@
+{
+  "name": "svg-optimizer",
+  "version": "0.0.1",
+  "description": "Optimize svg files.",
+  "main": "index.js",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.4",
+    "path": "^0.12.7",
+    "svgo": "^0.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "optimizer",
+    "svg"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ibio/svg-optimizer.git"
+  },
+  "author": "Ibio",
+  "license": "MIT"
+}
