@@ -1,6 +1,6 @@
 {
   "name": "svg-optimizer",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Optimize svg files.",
   "main": "index.js",
   "dependencies": {
