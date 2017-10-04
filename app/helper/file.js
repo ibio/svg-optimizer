@@ -1,4 +1,5 @@
 'use strict';
+
 const FS = require('fs');
 const Debug = require('./debug');
 

@@ -1,6 +1,7 @@
 'use strict';
 
 const Path = require('path');
+const SGF = require('staged-git-files');
 const Analyzer = require('./app/work/analyzer');
 const Optimizer = require('./app/work/optimizer');
 const Config = require('./app/config/config');
@@ -26,8 +27,24 @@ const init = () => {
     runFolders(params.folder);
   }else if(params.file){
     runFiles(params.file);
+  }else if(params.commit){
+    runStagedFiles(params.commit);
   }
 };
+
+const runStagedFiles = (data) => {
+  SGF((err, result) => {
+    result.forEach((item) => {
+      // svg only
+      if(Util.isSVG(item)){
+        _fileList.push(str);
+      }
+    });
+    //
+    Debug.at('run pre-commit, ' + _fileList.length + ' item(s) found', 'index.getStagedFiles');
+    goNextSingleFile();
+  });
+}
 
 const runFolders = (data) => {
   // console.log(_analyzer.getItemList());
@@ -35,10 +52,10 @@ const runFolders = (data) => {
   if(_analyzer.getItemList().length > 0){
     goNextFolderFile();
   }else{
-    Debug.at('start analyzing ' + data, 'index');
+    Debug.at('start analyzing ' + data, 'index.runFolders');
     // try NOT use absolute path to save space in cache file
     _analyzer.load(data, () => {
-      Debug.at('finish analyzing, ' + _analyzer.getItemList().length + ' items found', 'index');
+      Debug.at('finish analyzing, ' + _analyzer.getItemList().length + ' item(s) found', 'index.runFolders');
       //
       goNextFolderFile();
     });

@@ -8,6 +8,7 @@
     "lodash": "^4.17.4",
     "path": "^0.12.7",
     "shelljs": "^0.7.8",
+    "staged-git-files": "0.0.4",
     "svgo": "^0.7.2"
   },
   "devDependencies": {},
@@ -15,6 +16,7 @@
     "test-svg": "svg-optimizer",
     "test-svg-folder": "svg-optimizer folder='./etc'",
     "test-svg-file": "svg-optimizer file='./etc/test-folder/abc.svg,./etc/test-folder/real/MS_L02_15_012_38d893e6-ba36-5617-8cd1-24c42fee3434.svg'",
+    "test-svg-commit": "svg-optimizer commit=true",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
