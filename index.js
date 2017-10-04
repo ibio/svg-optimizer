@@ -8,53 +8,68 @@ const Util = require('./app/helper/util');
 const Debug = require('./app/helper/debug');
 
 
+
 const _analyzer = new Analyzer(Path.resolve(__dirname, Config.path.cache));
 const _optimizer = new Optimizer();
+
+let _fileList = [];
 
 
 /**
  * usage
- * node index.js root=./test-files
+ * node index.js folder=./test-files
  * node index.js file=abc.svg
  */
-const _params = Util.getParams(process.argv);
+const init = () => {
+  const params = Util.getParams(process.argv);
+  if(params.folder){
+    runFolders(params.folder);
+  }else if(params.file){
+    runFiles(params.file);
+  }
+};
 
-const runFolders = () => {
+const runFolders = (data) => {
+  // console.log(_analyzer.getItemList());
   // continue
   if(_analyzer.getItemList().length > 0){
-    goNextFile();
+    goNextFolderFile();
   }else{
-    Debug.at('start analyzing ' + _params.root, 'index');
+    Debug.at('start analyzing ' + data, 'index');
     // try NOT use absolute path to save space in cache file
-    _analyzer.load(_params.root, () => {
+    _analyzer.load(data, () => {
       Debug.at('finish analyzing, ' + _analyzer.getItemList().length + ' items found', 'index');
       //
-      goNextFile();
+      goNextFolderFile();
     });
   }
 };
 
-const runFiles = () => {
-  Debug.at(_params.file, 'index.runFile');
-  // NOTICE: use relative path only for scripts run
-  // _optimizer.shuffleIDs(Path.resolve(__dirname, _params.file));
-  _optimizer.shuffleIDs(_params.file);
+const runFiles = (data) => {
+  Debug.at(data, 'index.runFile');
+  _fileList = data.split(',') || [];
+  goNextSingleFile();
 }
 
-const goNextFile = () => {
+const goNextFolderFile = () => {
   const length = _analyzer.getItemList().length;
   const str = _analyzer.pop();
   if(str){
-    Debug.at(length + ' ' + str, 'index.goNextFile');
-    _optimizer.shuffleIDs(str, goNextFile);
+    Debug.at(length + ' ' + str, 'index.goNextFolderFile');
+    // NOTICE: use relative path only for scripts run
+    // _optimizer.shuffleIDs(Path.resolve(__dirname, _params.file));
+    _optimizer.shuffleIDs(str, goNextFolderFile);
   }
 };
 
-// init
-if(_params.root){
-  runFolders();
-}else if(_params.file){
-  runFiles();
+const goNextSingleFile = () => {
+  const length = _fileList.length;
+  const str = _fileList.pop();
+  if(str){
+    Debug.at(length + ' ' + str, 'index.goNextSingleFile');
+    _optimizer.shuffleIDs(str, goNextSingleFile);
+  }
 };
 
-// console.log(_analyzer.getItemList());
+// start here
+init();

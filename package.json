@@ -13,8 +13,8 @@
   "devDependencies": {},
   "scripts": {
     "test-svg": "svg-optimizer",
-    "test-svg-root": "svg-optimizer root=./etc",
-    "test-svg-file": "svg-optimizer file=./etc/test-folder/abc.svg",
+    "test-svg-folder": "svg-optimizer folder='./etc'",
+    "test-svg-file": "svg-optimizer file='./etc/test-folder/abc.svg,./etc/test-folder/real/MS_L02_15_012_38d893e6-ba36-5617-8cd1-24c42fee3434.svg'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

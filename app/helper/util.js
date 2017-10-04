@@ -28,7 +28,6 @@ obj.getFileName = (path) => {
 
 obj.getParams = (array) => {
 	const list = array || [];
-	const file = list[list.length - 1] || '';
 	const result = {};
 	list.forEach((val) => {
 		const pair = val.split('=') || [];
