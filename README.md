@@ -48,3 +48,8 @@ $ npm run svg-file
 `file` means the specific svg file you want to pass. It will only shuffle IDs within this file. If there is a space in the path file, please add `''` to wrap it. Also, you can use `,` to pass multiple files.
 
 
+### Pre-commit Check Usage
+
+You can even add it with git hoot, so that every time when you check-in your code, it will automatically optimize all newly added / modified svg files for you.
+
+Simply have look https://github.com/ibio/svg-optimizer/blob/master/example/pre-commit-package.json and rename it as `package.json`, change the places whenever necessary.
