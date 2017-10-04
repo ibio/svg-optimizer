@@ -15,7 +15,7 @@ $ npm run svg-optimizer file=./example.svg
 ### Installing
 
 ```bash
-$ npm install svg-optimizer
+$ npm install svg-optimizer --save-dev
 ```
 
 After installation, you can write the following into `scripts` of you project's `package.json`.
@@ -30,6 +30,6 @@ $ npm run svg-optimizer file=./example.svg
 
 `root` means the root folder you want to pass. It will automatically traverse all its sub-folders and find out all `svg` files, making them have DIFFERENT IDs with each other (as long as they have different filenames). It also support pause / resume (just simply press `ctrl + C` and run the same script again)! In case you want to stop for some reason during the optimization.
 
-`file` means the specific svg file you want to pass. It will only shuffle IDs within this file.
+`file` means the specific svg file you want to pass. It will only shuffle IDs within this file. If there is a space in the path file, please add `''` to wrap it. Also, you can use `,` to pass multiple files.
 
 
