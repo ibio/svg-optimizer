@@ -7,10 +7,12 @@
     "fs": "0.0.1-security",
     "lodash": "^4.17.4",
     "path": "^0.12.7",
+    "shelljs": "^0.7.8",
     "svgo": "^0.7.2"
   },
   "devDependencies": {},
   "scripts": {
+    "test-run": "svg-optimizer", 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -22,5 +24,12 @@
     "url": "git://github.com/ibio/svg-optimizer.git"
   },
   "author": "Ibio",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ibio/svg-optimizer/issues"
+  },
+  "bin": {
+    "svg-optimizer": "bin/run.js"
+  },
+  "homepage": "https://github.com/ibio/svg-optimizer#readme"
 }
