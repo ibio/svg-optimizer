@@ -26,13 +26,13 @@ After installation, you can write the following into `scripts` of you project's 
 ```bash
 $ npm init
 ```
-you can hit 'enter' to use all default setting.
+you can hit `enter` to use all default setting.
 
 2 add `scripts` on `package.json`.
 ```json
 "scripts": {
   "svg-root": "svg-optimizer root='./folder'",
-  "svg-file": "svg-optimizer file='./folder/example.svg'"
+  "svg-file": "svg-optimizer file='./example.svg'"
 },
 ```
 
