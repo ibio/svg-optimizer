@@ -90,3 +90,5 @@ const goNextSingleFile = () => {
 
 // start here
 init();
+
+module.exports = { Analyzer, Optimizer };

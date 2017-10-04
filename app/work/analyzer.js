@@ -36,7 +36,7 @@ const Analyzer = function(cachePath, cacheSplitor) {
 // root folder
 Analyzer.prototype.load = function(rootPath, callback) {
   this._dirList.push(rootPath);
-  this._addToCache(() => {
+  this._checkNextDir(() => {
     const str = this._fileList.join(this._cacheSplitor);
     //
     File.write(this._cachePath + '/' + CACHE_FILES, str, callback);
@@ -60,30 +60,31 @@ Analyzer.prototype.clear = function() {
   File.write(this._cachePath + '/' + CACHE_FILES, '');
   File.write(this._cachePath + '/' + CACHE_DIRS, '');
   File.write(this._cachePath + '/' + CACHE_FILES, '');
+  this._dirList = [];
   this._fileList = [];
 }
 
-Analyzer.prototype._addToCache = function(callback) {
-  const path = this._dirList.shift();
+Analyzer.prototype._checkNextDir = function(callback) {
+  const dir = this._dirList.shift();
   // sync way for now
   // for current folder
-  const list = File.getAllFiles(path) || [];
+  const list = File.getAllFiles(dir) || [];
   list.forEach(item => {
-    const str = path + '/' + item;
+    const path = dir + '/' + item;
     // BFS to get all files
-    if(File.isDir(str)){
-      this._dirList.push(str);
+    if(File.isDir(path)){
+      this._dirList.push(path);
     }else{
       // svg only
       if(Util.isSVG(item)){
-        this._fileList.push(str);
+        this._fileList.push(path);
       }
     }
   });
   //
   if(this._dirList.length > 0){
     // to avoid RangeError: Maximum call stack size exceeded
-    process.nextTick(() => {this._addToCache(callback);});
+    process.nextTick(() => {this._checkNextDir(callback);});
   }else{
     callback && callback();
   }
