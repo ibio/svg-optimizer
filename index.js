@@ -36,8 +36,8 @@ const runStagedFiles = (data) => {
   SGF((err, result) => {
     result.forEach((item) => {
       // svg only
-      if(Util.isSVG(item)){
-        _fileList.push(str);
+      if(Util.isSVG(item.filename)){
+        _fileList.push(item.filename);
       }
     });
     //
