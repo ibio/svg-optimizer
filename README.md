@@ -3,7 +3,7 @@
 A simple npm package for shuffling duplicated ids within the folder(including sub-folders).
 
 ```bash
-svg-optimizer root=./folder
+svg-optimizer folder=./folder
 or
 svg-optimizer file=./example.svg
 ```
@@ -31,19 +31,19 @@ you can hit `enter` to use all default setting.
 2 add `scripts` on `package.json`.
 ```json
 "scripts": {
-  "svg-root": "svg-optimizer root='./folder'",
+  "svg-folder": "svg-optimizer folder='./folder'",
   "svg-file": "svg-optimizer file='./example.svg'"
 },
 ```
 
 3 run the scripts
 ```bash
-$ npm run svg-root
+$ npm run svg-folder
 or
 $ npm run svg-file
 ```
 
-`root` means the root folder you want to pass. It will automatically traverse all its sub-folders and find out all `svg` files, making them have DIFFERENT IDs with each other (as long as they have different filenames). It also support pause / resume (just simply press `ctrl + C` and run the same script again)! In case you want to stop for some reason during the optimization.
+`folder` means the root folder you want to pass. It will automatically traverse all its sub-folders and find out all `svg` files, making them have DIFFERENT IDs with each other (as long as they have different filenames). It also support pause / resume (just simply press `ctrl + C` and run the same script again)! In case you want to stop for some reason during the optimization.
 
 `file` means the specific svg file you want to pass. It will only shuffle IDs within this file. If there is a space in the path file, please add `''` to wrap it. Also, you can use `,` to pass multiple files.
 
