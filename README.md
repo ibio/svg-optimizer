@@ -1,5 +1,4 @@
 # svg-optimizer
-Mainly use for 
 
 A simple npm package for shuffling duplicated ids within the folder(including sub-folders).
 
@@ -31,6 +30,6 @@ $ npm run svg-optimizer file=./example.svg
 
 `root` means the root folder you want to pass. It will automatically traverse all its sub-folders and find out all `svg` files, making them have DIFFERENT IDs with each other (as long as they have different filenames).
 
-'file' means the specific svg file you want to pass. It will only shuffle IDs within this file.
+`file` means the specific svg file you want to pass. It will only shuffle IDs within this file.
 
 
