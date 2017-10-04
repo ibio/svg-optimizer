@@ -36,14 +36,17 @@ const runFolders = () => {
 
 const runFiles = () => {
   Debug.at(_params.file, 'index.runFile');
-  _optimizer.shuffleIDs(Path.resolve(__dirname, _params.file));
+  // NOTICE: use relative path only for scripts run
+  // _optimizer.shuffleIDs(Path.resolve(__dirname, _params.file));
+  _optimizer.shuffleIDs(_params.file);
 }
 
 const goNextFile = () => {
+  const length = _analyzer.getItemList().length;
   const str = _analyzer.pop();
   if(str){
-    Debug.at(str, 'index.goNextFile');
-    _optimizer.shuffleIDs(Path.resolve(__dirname, str), goNextFile);
+    Debug.at(length + ' ' + str, 'index.goNextFile');
+    _optimizer.shuffleIDs(str, goNextFile);
   }
 };
 

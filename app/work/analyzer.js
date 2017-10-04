@@ -23,6 +23,7 @@ const Analyzer = function(cachePath, cacheSplitor) {
   }else{
     this._dirList = [];
   }
+
   //
   const fileStr = File.read(this._cachePath + '/' + CACHE_FILES);
   if(fileStr){
@@ -57,6 +58,9 @@ Analyzer.prototype.pop = function(callback) {
 
 Analyzer.prototype.clear = function() {
   File.write(this._cachePath + '/' + CACHE_FILES, '');
+  File.write(this._cachePath + '/' + CACHE_DIRS, '');
+  File.write(this._cachePath + '/' + CACHE_FILES, '');
+  this._fileList = [];
 }
 
 Analyzer.prototype._addToCache = function(callback) {
